@@ -169,16 +169,6 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
-
-        /* Dedicated Dropdown Display Logic */
-        .about-dropdown-menu {
-            display: none;
-        }
-        .about-dropdown-wrapper:hover .about-dropdown-menu,
-        .about-dropdown-wrapper:focus-within .about-dropdown-menu,
-        .about-dropdown-menu.active {
-            display: block;
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
@@ -240,33 +230,10 @@
                     </div>
                 </a>
 
-                <!-- SISI TENGAH: Menu Navigasi Desktop Presisi & Clean URL Path -->
+                <!-- SISI TENGAH: Menu Navigasi Desktop Clean Path-Based -->
                 <nav class="hidden lg:flex items-center justify-center gap-1 xl:gap-2 2xl:gap-3 text-xs lg:text-[12px] xl:text-[13px] 2xl:text-sm font-medium shrink min-w-0" aria-label="Main Navigation">
                     <a href="/" onclick="handleLinkClick(event, '/')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/" data-i18n="nav.home">Home</a>
-                    
-                    <!-- About Us with Reliable Dropdown Menu -->
-                    <div class="relative about-dropdown-wrapper py-2 group">
-                        <a href="/about" onclick="handleLinkClick(event, '/about')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap flex items-center space-x-1 focus:outline-none" data-route="/about">
-                            <span data-i18n="nav.about">About Us</span>
-                            <i class="fa-solid fa-chevron-down text-[9px] text-white/70 group-hover:text-gold group-hover:rotate-180 transition-transform duration-200 ml-0.5" aria-hidden="true"></i>
-                        </a>
-                        
-                        <!-- Dropdown Panel with Invisible Bridge -->
-                        <div class="about-dropdown-menu absolute left-1/2 -translate-x-1/2 top-full pt-1 z-50 min-w-[200px]">
-                            <div class="bg-forest-dark/95 border border-gold/30 rounded-lg shadow-2xl py-1.5 px-1 nav-glass">
-                                <a href="/about" onclick="handleAboutDropdownClick(event, 'about-intro')" class="block px-3 py-2 text-xs text-white/90 hover:text-gold hover:bg-white/5 rounded transition-colors whitespace-nowrap" data-i18n="nav.aboutDropdown.intro">
-                                    About Us
-                                </a>
-                                <a href="/about" onclick="handleAboutDropdownClick(event, 'about-vision')" class="block px-3 py-2 text-xs text-white/90 hover:text-gold hover:bg-white/5 rounded transition-colors whitespace-nowrap" data-i18n="nav.aboutDropdown.vision">
-                                    Vision & Mission
-                                </a>
-                                <a href="/about" onclick="handleAboutDropdownClick(event, 'about-org')" class="block px-3 py-2 text-xs text-white/90 hover:text-gold hover:bg-white/5 rounded transition-colors whitespace-nowrap" data-i18n="nav.aboutDropdown.org">
-                                    Organizational Structure
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+                    <a href="/about" onclick="handleLinkClick(event, '/about')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/about" data-i18n="nav.about">About Us</a>
                     <a href="/products" onclick="handleLinkClick(event, '/products')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/products" data-i18n="nav.products">Products</a>
                     <a href="/services" onclick="handleLinkClick(event, '/services')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/services" data-i18n="nav.services">Services</a>
                     <a href="/global-market" onclick="handleLinkClick(event, '/global-market')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/global-market" data-i18n="nav.global">Global Market</a>
@@ -274,7 +241,7 @@
                     <a href="/contact" onclick="handleLinkClick(event, '/contact')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/contact" data-i18n="nav.contact">Contact</a>
                 </nav>
 
-                <!-- SISI KANAN: Language Toggle (EN on left, ID on right) -->
+                <!-- SISI KANAN: Language Toggle -->
                 <div class="hidden lg:flex items-center gap-2 xl:gap-3.5 shrink-0">
                     <div class="flex items-center bg-forest-dark/90 rounded-full p-0.5 border border-gold/30 text-[11px] xl:text-xs">
                         <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-0.5 xl:py-1 rounded-full font-semibold transition-all duration-200" aria-label="Switch to English">
@@ -285,14 +252,13 @@
                         </button>
                     </div>
 
-                    <!-- Compact Request Quote CTA -->
                     <a href="/contact" onclick="handleLinkClick(event, '/contact')" class="bg-gold hover:bg-gold-light text-forest-dark font-bold px-3 py-1.5 xl:px-4 xl:py-2 rounded text-[11px] xl:text-xs transition-all duration-300 shadow-sm hover:shadow-gold/20 flex items-center space-x-1.5 whitespace-nowrap">
                         <span data-i18n="nav.quote">Request a Quote</span>
                         <i class="fa-solid fa-arrow-right text-[9px]" aria-hidden="true"></i>
                     </a>
                 </div>
 
-                <!-- Mobile Controls (Hamburger & Mobile Lang) -->
+                <!-- Mobile Controls -->
                 <div class="lg:hidden flex items-center space-x-2.5">
                     <div class="flex items-center bg-forest-dark rounded-full p-0.5 border border-gold/30 text-xs">
                         <button onclick="setLanguage('en')" id="mobile-lang-en" class="px-2 py-0.5 rounded-full font-semibold" aria-label="Switch to English">EN</button>
@@ -310,30 +276,7 @@
         <!-- Mobile Drawer Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-forest-dark border-b border-gold/20 px-4 pt-3 pb-6 space-y-3 transition-all duration-300" aria-label="Mobile Navigation">
             <a href="/" onclick="mobileNavigate(event, '/')" class="block text-white/90 hover:text-gold py-2 text-base font-medium border-b border-white/5" data-route="/" data-i18n="nav.home">Home</a>
-            
-            <!-- Mobile About Accordion -->
-            <div class="border-b border-white/5 py-1">
-                <div class="flex items-center justify-between py-2">
-                    <a href="/about" onclick="mobileNavigate(event, '/about')" class="text-white/90 hover:text-gold text-base font-medium" data-route="/about">
-                        <span data-i18n="nav.about">About Us</span>
-                    </a>
-                    <button type="button" onclick="toggleMobileAboutSubmenu(event)" class="p-2 text-white/70 hover:text-gold focus:outline-none" aria-label="Toggle Submenu">
-                        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200" id="mobile-about-chevron" aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div id="mobile-about-submenu" class="hidden pl-4 pb-2 space-y-2 border-l border-gold/30 ml-2">
-                    <a href="/about" onclick="mobileNavigateAboutSection(event, 'about-intro')" class="block text-white/80 hover:text-gold text-sm py-1" data-i18n="nav.aboutDropdown.intro">
-                        About Us
-                    </a>
-                    <a href="/about" onclick="mobileNavigateAboutSection(event, 'about-vision')" class="block text-white/80 hover:text-gold text-sm py-1" data-i18n="nav.aboutDropdown.vision">
-                        Vision & Mission
-                    </a>
-                    <a href="/about" onclick="mobileNavigateAboutSection(event, 'about-org')" class="block text-white/80 hover:text-gold text-sm py-1" data-i18n="nav.aboutDropdown.org">
-                        Organizational Structure
-                    </a>
-                </div>
-            </div>
-
+            <a href="/about" onclick="mobileNavigate(event, '/about')" class="block text-white/90 hover:text-gold py-2 text-base font-medium border-b border-white/5" data-route="/about" data-i18n="nav.about">About Us</a>
             <a href="/products" onclick="mobileNavigate(event, '/products')" class="block text-white/90 hover:text-gold py-2 text-base font-medium border-b border-white/5" data-route="/products" data-i18n="nav.products">Products</a>
             <a href="/services" onclick="mobileNavigate(event, '/services')" class="block text-white/90 hover:text-gold py-2 text-base font-medium border-b border-white/5" data-route="/services" data-i18n="nav.services">Services</a>
             <a href="/global-market" onclick="mobileNavigate(event, '/global-market')" class="block text-white/90 hover:text-gold py-2 text-base font-medium border-b border-white/5" data-route="/global-market" data-i18n="nav.global">Global Market</a>
@@ -349,7 +292,7 @@
     </header>
 
     <main id="app-view" class="flex-grow w-full max-w-full overflow-x-hidden" role="main">
-        <!-- Dynamic Page Content Rendered Here via Clean URL Path Router -->
+        <!-- Dynamic Page Content Rendered Here -->
     </main>
 
     <section id="global-cta-section" class="bg-gradient-to-r from-forest-dark via-forest to-forest-dark text-white py-16 border-t border-gold/30 w-full overflow-x-hidden">
@@ -479,18 +422,14 @@
     </footer>
 
     <script>
-        /* CONFIGURATION & CONSTANTS */
         const WHATSAPP_NUMBER = "6283187178158";
-        // Default language set to English ('en')
         let currentLang = localStorage.getItem('ghn_lang') || 'en';
 
-        /* HELPER FUNCTION TO FORMAT AMPERSAND WITH SANS-SERIF FONT */
         function formatAmp(str) {
             if (!str || typeof str !== 'string') return '';
             return str.replace(/&/g, '<span class="font-sans font-normal opacity-90">&</span>');
         }
 
-        /* MASTER BILINGUAL TRANSLATIONS OBJECT */
         const i18n = {
             id: {
                 meta: {
@@ -502,11 +441,6 @@
                     quote: "Minta Penawaran",
                     home: "Beranda",
                     about: "Tentang Kami",
-                    aboutDropdown: {
-                        intro: "Tentang Kami",
-                        vision: "Visi & Misi",
-                        org: "Struktur Organisasi"
-                    },
                     products: "Produk",
                     services: "Layanan",
                     global: "Pasar Global",
@@ -696,11 +630,6 @@
                     quote: "Request a Quote",
                     home: "Home",
                     about: "About Us",
-                    aboutDropdown: {
-                        intro: "About Us",
-                        vision: "Vision & Mission",
-                        org: "Organizational Structure"
-                    },
                     products: "Products",
                     services: "Services",
                     global: "Global Market",
@@ -882,7 +811,6 @@
             }
         };
 
-        /* CATEGORIES DATA ARCHITECTURE */
         const categories = [
             { id: 'forest-natural', icon: 'fa-tree', name: { id: "Produk Hutan & Alami", en: "Forest & Natural Products" } },
             { id: 'charcoal-briquettes', icon: 'fa-fire-flame-curved', name: { id: "Arang & Briket", en: "Charcoal & Briquettes" } },
@@ -945,7 +873,6 @@
             { id: '52', slug: 'ambergris', categorySlug: 'forest-natural', name: { id: 'Ambergris', en: 'Ambergris' }, shortDesc: { id: 'Ambergris alami berkualitas tinggi untuk industri parfum mewah dan aromaterapi.', en: 'High-grade natural ambergris prized for fine luxury perfumery and fixative formulations.' }, image: 'https://lh3.googleusercontent.com/d/1Uog4Ij8qNY9UHuIzWdkdXpj9My2mjeCG', featured: true }
         ];
 
-        /* APPLICATION STATE */
         let state = {
             searchQuery: '',
             selectedCategory: 'all',
@@ -1032,13 +959,13 @@
             close.classList.toggle('hidden');
         }
 
-        /* TRUE PATH-BASED ROUTING SYSTEM (HISTORY API) */
+        /* PATH-BASED ROUTING SYSTEM */
         function navigateTo(path, pushState = true) {
             if (pushState) {
                 try {
                     window.history.pushState({}, '', path);
                 } catch (e) {
-                    console.warn("History API pushState restricted in sandbox preview. Virtual routing active.");
+                    console.warn("History API pushState restricted in sandbox preview.");
                 }
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1056,62 +983,12 @@
             navigateTo(path, true);
         }
 
-        function scrollToAboutSection(sectionId) {
-            const el = document.getElementById(sectionId);
-            if (el) {
-                const headerOffset = 90;
-                const elementPosition = el.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }
-
-        function navigateToAboutSection(sectionId) {
-            const pathname = window.location.pathname;
-            if (pathname === '/about') {
-                scrollToAboutSection(sectionId);
-            } else {
-                navigateTo('/about', true);
-                setTimeout(() => {
-                    scrollToAboutSection(sectionId);
-                }, 220);
-            }
-        }
-
-        function handleAboutDropdownClick(event, sectionId) {
-            event.preventDefault();
-            navigateToAboutSection(sectionId);
-        }
-
-        function mobileNavigateAboutSection(event, sectionId) {
-            event.preventDefault();
-            toggleMobileMenu();
-            navigateToAboutSection(sectionId);
-        }
-
-        function toggleMobileAboutSubmenu(e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            const sub = document.getElementById('mobile-about-submenu');
-            const chev = document.getElementById('mobile-about-chevron');
-            if (sub && chev) {
-                sub.classList.toggle('hidden');
-                chev.classList.toggle('rotate-180');
-            }
-        }
-
         function navigateToCategory(event, catSlug) {
             event.preventDefault();
             state.selectedCategory = catSlug;
             navigateTo('/products?category=' + catSlug, true);
         }
 
-        /* SEO META UPDATER */
         function updatePageSEO(title, description, canonicalPath) {
             document.title = title;
             const metaTitleEl = document.getElementById('meta-title');
@@ -1132,7 +1009,6 @@
             }
         }
 
-        /* ROUTE MATCHER */
         function handleRoute(overridePath = null) {
             let pathname = window.location.pathname;
             let search = window.location.search;
@@ -1191,8 +1067,8 @@
                     );
                     renderProductDetail(appView, slug);
                 } else {
-                    updatePageSEO("Page Not Found | PT Global Hatren Nusantara", "Page not found.", pathname);
-                    render404(appView);
+                    updatePageSEO(i18n[currentLang].meta.title, i18n[currentLang].meta.desc, '/');
+                    renderHome(appView);
                 }
             } else if (pathname === '/services') {
                 const servTitle = currentLang === 'id'
@@ -1233,19 +1109,13 @@
                 const selectedProduct = params.get('product') || '';
                 renderContact(appView, selectedProduct);
             } else {
-                // Force fallback to home instead of 404 for preview sandbox robustness
-                updatePageSEO(
-                    i18n[currentLang].meta.title,
-                    i18n[currentLang].meta.desc,
-                    '/'
-                );
+                updatePageSEO(i18n[currentLang].meta.title, i18n[currentLang].meta.desc, '/');
                 renderHome(appView);
             }
         }
 
         function renderHome(container) {
             const lang = i18n[currentLang];
-            // Exactly 5 specified featured products sorted A-Z by English name
             const featuredSlugs = ['ambergris', 'biji-kopi-arabica-gayo', 'briket-bbq-hexagonal', 'briket-shisha', 'minyak-nilam'];
             const featuredProducts = masterProducts
                 .filter(p => featuredSlugs.includes(p.slug))
@@ -1429,13 +1299,11 @@
 
                         <!-- SEARCH, FILTER & SORT BAR -->
                         <div class="bg-transparent p-6 rounded shadow-none border border-ivory-muted mb-10 space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:gap-4">
-                            <!-- Search input -->
                             <div class="relative flex-grow">
                                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-charcoal/40 text-sm" aria-hidden="true"></i>
                                 <input type="text" id="product-search" value="${state.searchQuery}" oninput="handleSearchInput(this.value)" placeholder="${lang.products.searchPlaceholder}" class="w-full pl-10 pr-4 py-2.5 text-sm border border-ivory-muted rounded focus:outline-none focus:border-gold bg-white/60" aria-label="Search products">
                             </div>
 
-                            <!-- Category Select -->
                             <div class="w-full lg:w-64 shrink-0">
                                 <select id="category-filter" onchange="handleCategoryFilter(this.value)" class="w-full py-2.5 px-3 text-sm border border-ivory-muted rounded focus:outline-none focus:border-gold bg-white/60" aria-label="Filter by category">
                                     <option value="all">${formatAmp(lang.cat.all)}</option>
@@ -1445,7 +1313,6 @@
                                 </select>
                             </div>
 
-                            <!-- Sort Select -->
                             <div class="w-full lg:w-52 shrink-0">
                                 <select id="sort-select" onchange="handleSortChange(this.value)" class="w-full py-2.5 px-3 text-sm border border-ivory-muted rounded focus:outline-none focus:border-gold bg-white/60" aria-label="Sort products">
                                     <option value="featured" ${state.sortBy === 'featured' ? 'selected' : ''}>${formatAmp(lang.products.sortFeatured)}</option>
@@ -1454,7 +1321,6 @@
                                 </select>
                             </div>
 
-                            <!-- Clear Button -->
                             <button onclick="clearFilters()" class="w-full lg:w-auto px-4 py-2.5 bg-ivory text-charcoal hover:bg-ivory-dark font-medium text-sm rounded border border-ivory-muted transition-colors whitespace-nowrap">
                                 ${formatAmp(lang.products.clearFilters)}
                             </button>
@@ -1462,7 +1328,6 @@
 
                         <!-- PRODUCTS GRID -->
                         <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <!-- Filtered Products Render Here -->
                         </div>
                     </div>
                 </div>
@@ -1482,7 +1347,7 @@
             try {
                 window.history.replaceState({}, '', newPath);
             } catch (e) {
-                console.warn("History API replaceState restricted in sandbox preview.");
+                console.warn("History API replaceState restricted.");
             }
             updateCatalogGrid();
         }
@@ -1499,7 +1364,7 @@
             try {
                 window.history.replaceState({}, '', '/products');
             } catch (e) {
-                console.warn("History API replaceState restricted in sandbox preview.");
+                console.warn("History API replaceState restricted.");
             }
             
             const searchInput = document.getElementById('product-search');
@@ -1554,7 +1419,7 @@
             const lang = i18n[currentLang];
 
             if (!product) {
-                render404(container);
+                renderHome(container);
                 return;
             }
 
@@ -1603,7 +1468,6 @@
                             </div>
                         </div>
 
-                        <!-- SPECIFICATIONS & PACKAGING TABS -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="bg-white p-6 sm:p-8 rounded border border-ivory-muted shadow-sm">
                                 <h3 class="font-heading font-bold text-xl text-charcoal mb-4 flex items-center space-x-2">
@@ -1774,40 +1638,32 @@
                                 <p class="text-charcoal/70 text-sm sm:text-base font-light leading-relaxed">${formatAmp(lang.aboutPage.orgDesc)}</p>
                             </div>
 
-                            <!-- Interactive Hierarchical Tree Container (Responsive with horizontal scroll on mobile) -->
                             <div class="overflow-x-auto pb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
                                 <div class="min-w-[860px] flex flex-col items-center">
                                     
-                                    <!-- LEVEL 1: DIREKTUR -->
                                     <div class="w-64 bg-white p-5 rounded-lg border-2 border-gold shadow-md card-hover text-center relative">
                                         <span class="inline-block bg-forest-dark text-gold text-[10px] uppercase tracking-wider font-bold px-3 py-0.5 rounded-full mb-2">
                                             ${formatAmp(lang.aboutPage.posDirector)}
                                         </span>
-                                        <h3 class="font-heading font-bold text-lg text-charcoal">Sahat Maruli Sijabat</h3>
+                                        <h3 class="font-heading font-bold text-lg text-charcoal">Viena Renata</h3>
                                     </div>
 
-                                    <!-- Connector line: Direktur to Manajer Komisaris -->
                                     <div class="w-0.5 h-8 bg-gold/70"></div>
 
-                                    <!-- LEVEL 2: MANAJER KOMISARIS -->
                                     <div class="w-64 bg-white p-5 rounded-lg border-2 border-gold shadow-md card-hover text-center relative">
                                         <span class="inline-block bg-forest-dark text-gold text-[10px] uppercase tracking-wider font-bold px-3 py-0.5 rounded-full mb-2">
                                             ${formatAmp(lang.aboutPage.posCommissionerMgr)}
                                         </span>
-                                        <h3 class="font-heading font-bold text-lg text-charcoal">Riza Octaviola</h3>
+                                        <h3 class="font-heading font-bold text-lg text-charcoal">Sahat Maruli Sijabat</h3>
                                     </div>
 
-                                    <!-- Connector line: Manajer Komisaris to Branch Divider -->
                                     <div class="w-0.5 h-8 bg-gold/70"></div>
 
-                                    <!-- LEVEL 3: 3-WAY BRANCHING GRID (Marketing | Admin & IT | Manajer Lapangan) -->
                                     <div class="w-full max-w-5xl relative">
-                                        <!-- Horizontal Connector Bar connecting the 3 columns -->
                                         <div class="absolute top-0 left-[16.66%] right-[16.66%] h-0.5 bg-gold/70"></div>
 
                                         <div class="grid grid-cols-3 gap-6 pt-0">
                                             
-                                            <!-- COLUMN 1: MARKETING & ITS SUB-BRANCHES -->
                                             <div class="flex flex-col items-center">
                                                 <div class="w-0.5 h-8 bg-gold/70"></div>
                                                 
@@ -1856,7 +1712,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- COLUMN 2: ADMIN & IT (Moved to Center) -->
                                             <div class="flex flex-col items-center">
                                                 <div class="w-0.5 h-8 bg-gold/70"></div>
 
@@ -1869,7 +1724,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- COLUMN 3: MANAJER LAPANGAN & STAF LAPANGAN (Moved to Right) -->
                                             <div class="flex flex-col items-center">
                                                 <div class="w-0.5 h-8 bg-gold/70"></div>
 
@@ -1934,7 +1788,6 @@
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                            <!-- WhatsApp Card -->
                             <div class="bg-white rounded border border-ivory-muted shadow-sm p-8 flex flex-col justify-between card-hover">
                                 <div>
                                     <div class="w-14 h-14 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-6">
@@ -1950,7 +1803,6 @@
                                 </a>
                             </div>
 
-                            <!-- Email Card -->
                             <div class="bg-white rounded border border-ivory-muted shadow-sm p-8 flex flex-col justify-between card-hover">
                                 <div>
                                     <div class="w-14 h-14 rounded bg-forest/10 text-forest flex items-center justify-center text-3xl mb-6">
@@ -1967,7 +1819,6 @@
                             </div>
                         </div>
 
-                        <!-- Additional Office Information -->
                         <div class="bg-white rounded border border-ivory-muted p-8 sm:p-10 shadow-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left">
                             <div class="flex flex-col md:flex-row items-center md:items-start space-y-3 md:space-y-0 md:space-x-4">
                                 <div class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center text-lg shrink-0">
@@ -2024,23 +1875,6 @@
             `;
         }
 
-        function render404(container) {
-            const lang = i18n[currentLang];
-            container.innerHTML = `
-                <div class="fade-in py-24 bg-ivory text-center w-full overflow-x-hidden">
-                    <div class="max-w-md mx-auto px-4">
-                        <h1 class="text-6xl font-heading font-bold text-forest mb-4">404</h1>
-                        <h2 class="text-2xl font-bold text-charcoal mb-2">${formatAmp(lang.notFound.title)}</h2>
-                        <p class="text-sm text-charcoal/60 mb-8">${formatAmp(lang.notFound.desc)}</p>
-                        <a href="/" onclick="handleLinkClick(event, '/')" class="inline-block bg-gold text-forest-dark font-bold px-6 py-3 rounded text-sm">
-                            ${formatAmp(lang.notFound.btnHome)}
-                        </a>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Initialize Path-Based Popstate Listener
         window.addEventListener('popstate', () => handleRoute());
 
         window.addEventListener('DOMContentLoaded', () => {
