@@ -35,7 +35,7 @@
       "description": "Indonesian commodity export, import, and trading company connecting natural resources with international markets.",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Bandung",
+        "addressLocality": "Kab. Bandung",
         "addressRegion": "West Java",
         "addressCountry": "ID"
       },
@@ -227,7 +227,7 @@
                     </div>
                 </a>
 
-                <!-- SISI TENGAH: Menu Navigasi Desktop Clean Path-Based -->
+                <!-- SISI TENGAH: Menu Navigasi Desktop Clean Path-Based Tanpa Dropdown -->
                 <nav class="hidden lg:flex items-center justify-center gap-1 xl:gap-2 2xl:gap-3 text-xs lg:text-[12px] xl:text-[13px] 2xl:text-sm font-medium shrink min-w-0" aria-label="Main Navigation">
                     <a href="/" onclick="handleLinkClick(event, '/')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/" data-i18n="nav.home">Home</a>
                     <a href="/about" onclick="handleLinkClick(event, '/about')" class="nav-link text-white/90 hover:text-gold transition-colors px-2 py-1 rounded whitespace-nowrap" data-route="/about" data-i18n="nav.about">About Us</a>
@@ -341,10 +341,6 @@
                 <p class="text-white/60 leading-relaxed font-light text-xs sm:text-sm" data-i18n="footer.tagline">
                     Indonesian Commodities. Global Connections. Connecting natural resources to international markets with reliability and excellence.
                 </p>
-                    <div class="pt-2 text-xs text-gold flex items-center space-x-2">
-                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
-                        <span>International B2B Trade & Sourcing</span>
-                    </div>
                 </div>
 
                 <!-- Navigation Links -->
@@ -380,7 +376,7 @@
                     <ul class="space-y-3 text-xs">
                         <li class="flex items-start space-x-3">
                             <i class="fa-solid fa-location-dot text-gold mt-1" aria-hidden="true"></i>
-                            <span class="text-white/70">Bandung, Indonesia</span>
+                            <span class="text-white/70" data-i18n="contact.officeDesc">Kab. Bandung, Jawa Barat, Indonesia</span>
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fa-solid fa-envelope text-gold" aria-hidden="true"></i>
@@ -410,8 +406,6 @@
             <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 space-y-4 sm:space-y-0">
                 <p>&copy; 2026 PT Global Hatren Nusantara. All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <span data-i18n="footer.tradeTerm">B2B Commodity Sourcing & Export</span>
-                    <span>•</span>
                     <span data-i18n="footer.compliance">Compliance Available Upon Request</span>
                 </div>
             </div>
@@ -579,7 +573,7 @@
                     emailBtn: "Kirim Email Sekarang",
                     phoneTitle: "Telepon Kantor",
                     officeTitle: "Lokasi Kantor",
-                    officeDesc: "Bandung, Jawa Barat, Indonesia",
+                    officeDesc: "Kab. Bandung, Jawa Barat, Indonesia",
                     hoursTitle: "Jam Operasional",
                     hoursDesc: "Senin – Jumat: 09.00 – 17.00 WIB<br>Sabtu: 09.00 – 15.00 WIB (GMT+7)",
                     igTitle: "Instagram Resmi"
@@ -608,7 +602,6 @@
                     colCompany: "Perusahaan",
                     colProducts: "Produk",
                     colContact: "Kontak",
-                    tradeTerm: "Perdagangan & Ekspor B2B Komoditas",
                     compliance: "Sertifikasi & Kualifikasi Tersedia berdasarkan Permintaan Resmi"
                 },
                 notFound: {
@@ -768,7 +761,7 @@
                     emailBtn: "Send Email Now",
                     phoneTitle: "Office Telephone",
                     officeTitle: "Office Location",
-                    officeDesc: "Bandung, West Java, Indonesia",
+                    officeDesc: "Bandung Regency, West Java, Indonesia",
                     hoursTitle: "Business Hours",
                     hoursDesc: "Monday – Friday: 09:00 – 17:00 WIB<br>Saturday: 09:00 – 15:00 WIB (GMT+7)",
                     igTitle: "Official Instagram"
@@ -797,7 +790,6 @@
                     colCompany: "Company",
                     colProducts: "Products",
                     colContact: "Contact",
-                    tradeTerm: "B2B Commodity Sourcing & Export",
                     compliance: "Compliance Available Upon Request"
                 },
                 notFound: {
@@ -1014,7 +1006,7 @@
                 const parts = overridePath.split('?');
                 pathname = parts[0];
                 search = parts.length > 1 ? '?' + parts[1] : '';
-            } else if (!pathname || pathname === '' || pathname === '/' || pathname.includes('blob:') || pathname.length < 2 || pathname.includes('preview')) {
+            } else if (!pathname || pathname === '' || pathname === '/' || pathname.includes('blob:') || pathname.includes('preview') || pathname.length < 2) {
                 pathname = '/';
                 search = '';
             }
