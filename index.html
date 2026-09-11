@@ -8,12 +8,14 @@
     <meta name="keywords" content="Indonesian commodities export, PT Global Hatren Nusantara, spice export Indonesia, coconut charcoal briquettes, patchouli oil, ambergris, Gayo arabica coffee, agricultural commodities supplier">
     <meta name="author" content="PT Global Hatren Nusantara">
     
-    <!-- Open Graph / Social Media Meta Tags for SEO (WhatsApp & Social Preview Logo) -->
+    <!-- Open Graph / Social Media Meta Tags for WhatsApp & Social Preview Logo -->
     <meta property="og:title" content="PT Global Hatren Nusantara | Indonesian Commodity Export & Import">
     <meta property="og:description" content="Connecting premium Indonesian natural resources, spices, charcoal briquettes, and essential oils to global markets.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ptglobalhatrennusantara.com">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1uoKWgVT8k8VfueQXEpLlZQLuUy2RAwFL">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -1006,7 +1008,7 @@
                 const parts = overridePath.split('?');
                 pathname = parts[0];
                 search = parts.length > 1 ? '?' + parts[1] : '';
-            } else if (!pathname || pathname === '' || pathname.includes('blob:') || pathname.includes('preview') || pathname.length < 2) {
+            } else if (!pathname || pathname === '' || pathname === '/' || pathname.includes('blob:') || pathname.includes('preview')) {
                 pathname = '/';
                 search = '';
             }
@@ -1014,7 +1016,7 @@
             const appView = document.getElementById('app-view');
             updateActiveNav(pathname);
 
-            if (pathname === '/' || pathname === '') {
+            if (pathname === '/' || pathname === '' || pathname === '/index.html') {
                 updatePageSEO(
                     i18n[currentLang].meta.title,
                     i18n[currentLang].meta.desc,
