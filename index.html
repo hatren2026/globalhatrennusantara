@@ -784,7 +784,6 @@
                     coconut: "Coconut Products",
                     agri: "Agricultural Commodities",
                     coffee: "Coffee & Cocoa",
-                    seafood: "Seafood & Marine Products",
                     other: "Other Commodities"
                 },
                 footer: {
@@ -810,7 +809,6 @@
             { id: 'coconut', icon: 'fa-stroopwafel', name: { id: "Produk Kelapa", en: "Coconut Products" } },
             { id: 'agricultural', icon: 'fa-wheat-awn', name: { id: "Komoditas Pertanian", en: "Agricultural Commodities" } },
             { id: 'coffee-cocoa', icon: 'fa-mug-hot', name: { id: "Kopi & Kakao", en: "Coffee & Cocoa" } },
-            { id: 'seafood', icon: 'fa-fish', name: { id: "Hasil Laut", en: "Seafood & Marine Products" } },
             { id: 'other', icon: 'fa-boxes-stacked', name: { id: "Komoditas Lainnya", en: "Other Commodities" } }
         ];
 
@@ -1037,8 +1035,8 @@
                     ? "Katalog Produk Komoditas Ekspor | PT Global Hatren Nusantara" 
                     : "Export Commodity Products Catalog | PT Global Hatren Nusantara";
                 const prodDesc = currentLang === 'id'
-                    ? "Jelajahi portofolio komoditas unggulan Indonesia termasuk rempah, arang briket, produk hutan, kopi, dan hasil laut."
-                    : "Explore our portfolio of Indonesian commodities including spices, charcoal briquettes, forest products, coffee, and seafood.";
+                    ? "Jelajahi portofolio komoditas unggulan Indonesia termasuk rempah, arang briket, produk hutan, dan kopi."
+                    : "Explore our portfolio of Indonesian commodities including spices, charcoal briquettes, forest products, and coffee.";
                 updatePageSEO(prodTitle, prodDesc, '/products' + search);
                 renderProducts(appView);
             } else if (pathname.startsWith('/products/')) {
